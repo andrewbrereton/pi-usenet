@@ -8,9 +8,10 @@
     sudo mkdir /var/sabnzbd
     sudo chown sabnzbd:nzb /var/sabnzbd
 
-test
+## Test
 
     sudo su sabnzbd -c "/usr/local/sabnzbd/SABnzbd.py -f /var/sabnzbd -s 192.168.1.3:8080"
 
 http://192.168.1.3:8080
+
 ctrl c
