@@ -1,15 +1,26 @@
 # Install CouchPotato
 
-    sudo useradd --system --user-group --no-create-home couchpotato
-    git clone git://github.com/RuudBurger/CouchPotatoServer.git
-    sudo mv CouchPotatoServer /usr/local/couchpotato
-    sudo chown -R couchpotato:couchpotato /usr/local/couchpotato
-    sudo mkdir /var/couchpotato
-    sudo chown -R couchpotato:couchpotato /var/couchpotato
+```
+sudo su
+useradd --system --user-group --no-create-home couchpotato
+git clone git://github.com/RuudBurger/CouchPotatoServer.git
+mv CouchPotatoServer /usr/local/couchpotato
+chown -R couchpotato:couchpotato /usr/local/couchpotato
+mkdir /var/couchpotato
+chown -R couchpotato:couchpotato /var/couchpotato
+cp /usr/local/couchpotato/init/ubuntu /etc/init.d/couchpotato
+cat > /etc/default/couchpotato <<EOF
+CP_HOME=/usr/local/couchpotato
+CP_USER=root
+CP_DATA=/var/couchpotato
+CP_OPTS=--config_file=/var/couchpotato/couchpotato.ini
+EOF
+exit
+```
 
 ## Test
 
-    sudo su couchpotato -c "/usr/local/couchpotato/CouchPotato.py --data_dir=/var/couchpotato --config_file=/var/couchpotato/couchpotato.ini"
+    sudo /etc/init.d/couchpotato start
 
 http://192.168.1.3:5050
 
